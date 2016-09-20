@@ -1,6 +1,10 @@
 class PhotosController < ApplicationController
   def index
     @photos = Photo.order('created_at')
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @photos }
+    end
   end
 
   def new
